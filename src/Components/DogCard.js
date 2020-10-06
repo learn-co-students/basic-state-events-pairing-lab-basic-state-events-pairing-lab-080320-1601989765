@@ -1,17 +1,38 @@
-import React from "react";
+import React, { Component } from 'react'
 
-function DogCard() {
-  return (
-    <div className="card">
+export default class DogCard extends Component {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       bark: "none"
+    }
+  }
+
+  handleBark = (event) => {
+    (this.state.bark === 'none') ? this.setState({bark : "block"})  : this.setState({bark: "none"})
+
+
+    // this.setState( previousState => {
+    //   return (previousState.bark === 'none') ? this.state.bark = !previousState.bark : this.state.bark
+      
+    // })
+  }
+  
+  
+
+  render() {
+    return (
+      <div className="card">
       <span className="content">
-        <h2 >{/*Dog name goes here*/}</h2>
-        <img alt="" src={""} />
+        <h2 >{this.props.name}</h2>
+        <img alt={this.props.breed} src={this.props.img} />
       </span>
       <span className="bark">
-        <button>Bark</button>
+        <button onClick={this.handleBark}>Bark</button>
+        <h2 style={{display: this.state.bark}}>Bark!</h2>
       </span>
     </div>
-  );
+    )
+  }
 }
-
-export default DogCard;
