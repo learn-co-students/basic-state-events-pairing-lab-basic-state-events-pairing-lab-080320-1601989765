@@ -5,12 +5,11 @@ class DogList extends Component {
 
 
   render() {
-    console.log(this.props.api)
+    
     return (
-      
+      <>
         <div className="list"> 
-        
-          {this.props.api.map((dog) => 
+          {this.props.dogs.map((dog) => 
               <DogCard 
                 key={dog.id} 
                 name = {dog.name} 
@@ -18,6 +17,7 @@ class DogList extends Component {
                 breed = {dog.breed}/>)
           }
         </div>
+      </>
     )
   }
 }
