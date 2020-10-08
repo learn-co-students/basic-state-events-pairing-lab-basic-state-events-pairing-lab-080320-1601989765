@@ -1,18 +1,24 @@
 import React, { Component } from "react";
-import apiResponse from '../api.js'
 import DogCard from "../Components/DogCard.js";
 
 class DogList extends Component {
 
 
   render() {
-    return <div className="list">{
-        apiResponse.map((dog, index) => <DogCard name = {dog.name} 
-          img = {dog.img}
-          breed = {dog.breed}
-          />)
-      }
-    </div>;
+    console.log(this.props.api)
+    return (
+      
+        <div className="list"> 
+        
+          {this.props.api.map((dog) => 
+              <DogCard 
+                key={dog.id} 
+                name = {dog.name} 
+                img = {dog.img}
+                breed = {dog.breed}/>)
+          }
+        </div>
+    )
   }
 }
 

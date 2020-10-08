@@ -11,12 +11,6 @@ export default class DogCard extends Component {
 
   handleBark = (event) => {
     (this.state.bark === 'none') ? this.setState({bark : "block"})  : this.setState({bark: "none"})
-
-
-    // this.setState( previousState => {
-    //   return (previousState.bark === 'none') ? this.state.bark = !previousState.bark : this.state.bark
-      
-    // })
   }
   
   
