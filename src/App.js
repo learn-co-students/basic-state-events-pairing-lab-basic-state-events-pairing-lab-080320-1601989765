@@ -22,12 +22,7 @@ class App extends Component {
       dogs: apiResponse
     }
   }
-
-  log = (params) => {
-    console.log(params)
-  }
   
-
   handleFormChange = (event) => {
     let newFormData = {[event.target.name]: event.target.value}
     this.setState({
@@ -50,18 +45,6 @@ class App extends Component {
   handleSearchChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
-    })
-    this.updateFitlerDogs() 
-  }
-
-  setSearch = (event) => {
-    
-  }
-  
-  
-  updateFitlerDogs = () => {
-    this.setState({
-      dogs: this.filteredDogs()
     })
   }
 
@@ -101,6 +84,15 @@ class App extends Component {
       </>
     );
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.dogs === this.state.dogs){
+      this.setState({
+        dogs: this.filteredDogs()
+      })
+    }
+  }
+  
 }
 
 export default App;
